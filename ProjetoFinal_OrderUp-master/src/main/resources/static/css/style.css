@@ -1,0 +1,92 @@
+html,
+body {
+    min-height: 100%;
+    margin: 0;
+    background-color:#69F0AE;
+}
+
+.card{
+    border: none;
+}
+
+.custom-navbar {
+    background-color: #69F0AE;
+}
+
+.card-container{
+
+    background-color: #69F0AE;
+    padding: 50px;
+
+
+}
+
+.perfil{
+    display:flex;
+    justify-content:center;
+    flex-direction: column;
+
+
+}
+
+.modal{
+    display: none;
+}
+
+
+#os{
+    background-color: #e7e8e8;
+
+}
+
+.custom-form-floating {
+    font-size: 12px;
+}
+
+.row{
+    margin-bottom: 15px;
+}
+
+.card-container-custom{
+    margin: 15px;
+}
+
+span{
+    margin: 15px;
+}
+
+.AM{
+
+    background-color: #e7e8e8;
+}
+
+.card-section {
+    height: 100vh;
+    background-image: url('../imagens/backgroundUp.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.card-section .card {
+    border-radius: 1rem;
+}
+
+.card-section .col-10 {
+    max-width: 400px;
+}
+#cadastro,#modalretorn,#cep-erro{
+
+    display: none;
+}
+
+
+
+
+
+
+ .material-icons {
+    color: grey;
+
+ }
+
+

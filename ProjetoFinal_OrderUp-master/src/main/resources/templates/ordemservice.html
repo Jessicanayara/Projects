@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Ordem de serviço</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div th:replace="~{toolbar.html}"></div>
+
+
+    <div class="card-container">
+        <div class="card">
+            <div class="card-body">
+                <div class="row g-2">
+                    <div class="col d-flex align-items-start">
+                        <button class="btn btn-link toolbar-link btn-voltar" onclick="home()">
+                            <i class="material-icons">arrow_back</i>
+                        </button></div>
+                    <div class="col-8 d-flex align-items-start ">
+                        <h3 class="text-center">Cadastrar Ordem de serviço</h3>
+                    </div>
+                </div>
+                <form th:action="@{'/' + ${id} + '/ordemservice'}" method="post" th:object="${ordem}" id="formservice">
+                <div class="card" id="os">
+                    <div class="card-body">
+                        <div class="row g-4">
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="responsavel" th:field="*{responsavel}">
+                                    <label for="responsavel">Responsável</label>
+                                </div>
+                            </div>
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <input type="date" class="form-control" id="data" th:field="*{data}">
+                                    <label for="data">Data</label>
+                                </div>
+                            </div>
+                            <div class="col-md">
+                                <div class="form-floating">
+
+                                    <input type="text"class="form-control" id="search" list="clientes"th:field="*{cliente.nome}" >
+                                    <label for="search">Cliente</label>
+
+                                    <datalist id="clientes">
+
+                                        <option th:each="cliente : ${clientes}" th:value="${cliente.nome}" th:text="${cliente.nome}"></option>
+                                    </datalist>
+                                    <div th:if="${mensagemCliente}" class="error-message">
+                                        <span th:text="${mensagemCliente}"></span>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                <div class="card-container-custom">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row g-3">
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="equipamento" th:field="*{equipamento}">
+                                        <label for="equipamento">Equipamento</label>
+                                    </div>
+                                </div>
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="marca" th:field="*{marca}">
+                                        <label for="marca">Marca</label>
+                                    </div>
+                                </div>
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="numserie" th:field="*{numserie}">
+                                        <label for="numserie">Numero de serie</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-container-custom">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row g-3">
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <textarea class="form-control" id="diagnostico" th:field="*{diagnostico}"></textarea>
+                                        <label for="diagnostico">Diagnostico Atual</label>
+                                    </div>
+                                </div>
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <textarea class="form-control" id="pecas" th:field="*{pecas}"></textarea>
+                                        <label for="pecas">Peças</label>
+                                    </div>
+                                </div>
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <textarea class="form-control" id="laudo" th:field="*{laudo}"></textarea>
+                                        <label for="laudo">Laudo Tecnico</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-container-custom">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row g-3">
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="documento" th:field="*{documento}">
+                                        <label for="documento">Documento</label>
+                                    </div>
+                                </div>
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="assinatura" th:field="*{assinatura}">
+                                        <label for="assinatura">Assinatura</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container text-center">
+                    <div class="row justify-content-md-center">
+                        <div class="col col-lg-2">
+                            <button type="button" class="btn btn-outline-success" id="del" onclick="limpar()">Limpar</button>
+                        </div>
+                        <div class="col-md-auto">
+                            <span></span>
+                        </div>
+                        <div class="col col-lg-2">
+                            <button  type="submit" class="btn btn-success" >Salvar</button>
+                        </div>
+
+                      </div>
+                    </div>
+                </div>
+
+                    <div th:if="${not #strings.isEmpty(mensagemSalvo) or not #strings.isEmpty(mensagemErro)}" class="success-message" id="chamarmodal">
+                        <div class="modal" tabindex="-1" id="modal">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Aviso</h5>
+                                        <button type="button" class="btn-close" aria-label="Close" onclick="closeModal()"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <span th:text="${mensagemSalvo}"></span>
+                                        <span th:text="${mensagemErro}"></span>
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+<script type="application/javascript" src="/js/ordem.js" defer></script>
+</body>
+</html>
